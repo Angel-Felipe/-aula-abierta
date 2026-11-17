@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aula Abierta</title>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f9fb;--sf:#fff;--tx:#191c1e;--mu:#5a5e66;--ln:#dde2e8;--ac:#006398;--lk:var(--ac);--nv:#0f2042;--on:#fff;--ok:#0a7a55;--er:#ba1a1a;--wn:#fff4d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root:not([data-theme="light"]){color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1116;--sf:#171b22;--tx:#e8eaed;--mu:#9ba1aa;--ln:#2a303a;--nv:#1d2b4d;--lk:color-mix(in srgb,var(--ac) 55%,#fff);--wn:#3a3115}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0e1116;--sf:#171b22;--tx:#e8eaed;--mu:#9ba1aa;--ln:#2a303a;--nv:#1d2b4d;--lk:color-mix(in srgb,var(--ac) 55%,#fff);--wn:#3a3115}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.6 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:Literata,Georgia,serif;line-height:1.25;margin:0 0 .4em;text-wrap:balance}
+h1{font-size:1.9rem}h2{font-size:1.4rem}h3{font-size:1.1rem}
+a{color:var(--lk)}p{margin:0 0 .8em}small,.mu{color:var(--mu)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--ln)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.w{max-width:720px;margin:0 auto;padding:0 1rem}
+.bar{display:flex;align-items:center;justify-content:space-between;height:56px;gap:.5rem}
+.brand{font:700 1.15rem Literata,serif;text-decoration:none;color:var(--tx)}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--sf);border-top:1px solid var(--ln);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav .w{display:flex}.nav a{flex:1;text-align:center;padding:.7rem 0;text-decoration:none;color:var(--mu);font-weight:600;font-size:.9rem}
+.nav a.on{color:var(--lk);box-shadow:inset 0 3px var(--ac)}
+main{padding:1.25rem 0 6rem}
+.card{display:block;background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:1rem;margin:0 0 .8rem;text-decoration:none;color:inherit}
+a.card:hover{border-color:var(--ac)}
+.hero{background:var(--nv);color:#fff;border-radius:14px;padding:1.4rem;margin-bottom:1.2rem}
+.hero p{color:#d3dcf2}.hero h1{color:#fff}
+.row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}.sp{justify-content:space-between}
+.chip{border:1px solid var(--ln);background:var(--sf);color:var(--tx);border-radius:99px;padding:.3rem .8rem;font:600 .85rem "Source Sans 3",system-ui,sans-serif;cursor:pointer;text-decoration:none}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:.6rem 1rem;font:600 .95rem "Source Sans 3",sans-serif;cursor:pointer;min-height:44px;text-decoration:none;display:inline-flex;align-items:center}
+.btn.g{background:transparent;color:var(--lk);border:1px solid var(--ln)}.btn.d{background:var(--er)}.btn.s{min-height:36px;padding:.3rem .8rem;font-size:.85rem}
+input,select,textarea{width:100%;padding:.6rem .7rem;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx);font:inherit;margin:.2rem 0 .8rem}
+textarea{min-height:160px}input[type=color]{height:44px;padding:2px}
+label{font-weight:600;font-size:.9rem}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.art{font:400 var(--fs,18px)/1.75 Literata,Georgia,serif;max-width:62ch}.art h2{margin-top:1.6em}
+.art blockquote{margin:1.2em 0;padding:.2em 1em;border-left:4px solid var(--ac);color:var(--mu);font-style:italic}
+.prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;background:var(--ac);z-index:11;width:0}
+.tag{font-size:.8rem;font-weight:700;color:var(--lk)}
+.flag{background:var(--wn);border-radius:6px;padding:.4rem .6rem;font-size:.9rem;margin-bottom:.6rem}
+.tabs{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.6rem;margin-bottom:.8rem}.tabs .chip{white-space:nowrap}
+.stat{flex:1;min-width:130px;text-align:center}.stat b{font:700 2rem Literata,serif;display:block}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:5.2rem;background:var(--tx);color:var(--bg);padding:.6rem 1rem;border-radius:8px;z-index:20;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#app:focus{outline:none}
+@media print{.top,.nav,.btn,#fc,.prog,.toast{display:none!important}body{background:#fff;color:#000}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head>
+<body>
+<div class="prog" id="prog"></div>
+<header class="top"><div class="w bar"><a class="brand" href="#inicio" id="brand"></a><div class="row"><button class="chip" data-a="theme" aria-label="Cambiar entre tema claro y oscuro">Tema</button></div></div></header>
+<main class="w" id="app" tabindex="-1"></main>
+<nav class="nav" aria-label="Principal"><div class="w" id="nav"></div></nav>
+<script>
+const AREAS=["Ciencias Naturales","Lengua Española","Ciencias Sociales","Matemática"];
+const TIPOS=["Guía didáctica","Ficha imprimible","Rúbrica","Infografía"];
+const KEY="aula-abierta-v1";
+const seed=()=>({p:{name:"Ángel Felipe Díaz Mota",role:"Especialista en Didáctica",school:"Nivel Secundario - Distrito 10-01",blog:"Aula Abierta",lema:"Enseñar, compartir e inspirar",accent:"#006398"},
+posts:[
+{id:"p1",t:"El ciclo del agua y su importancia para la vida",s:"Secuencia didáctica para comprender evaporación, condensación y precipitación con experimentos caseros.",a:"Ciencias Naturales",g:"5to Grado",d:"2025-03-14",st:"pub",b:"## ¿De dónde viene la lluvia?\n\nCada vez que vemos un aguacero sobre Santo Domingo, el valle del Cibao o el río Yaque del Norte, presenciamos el ciclo del agua, una obra que lleva miles de millones de años en marcha.\n\n> El agua que bebió un dinosaurio hace millones de años es la misma que hoy toca los manglares dominicanos.\n\n## Las cuatro fases\n\nEvaporación: el sol calienta ríos y mar y convierte el agua en vapor. Condensación: el vapor se enfría y forma nubes. Precipitación: las gotas caen como lluvia o llovizna. Infiltración: el agua alimenta acuíferos y vuelve a los ríos.\n\n## Actividad en el aula\n\nArmen un terrario en una botella plástica reutilizable. Pidan a los estudiantes que registren su hipótesis, observen durante tres días y escriban una conclusión con sus propias palabras."},
+{id:"p2",t:"Fracciones equivalentes: método visual para el aula y el hogar",s:"Estrategias gráficas paso a paso para construir intuición antes de pasar a los algoritmos.",a:"Matemática",g:"4to Grado",d:"2025-03-11",st:"pub",b:"## Ver antes de calcular\n\nUna fracción es una parte de un todo. Dibujen una barra dividida en dos y otra dividida en cuatro: la mitad ocupa el mismo espacio que dos cuartos.\n\n## Secuencia concreto, pictórico, abstracto\n\nPrimero manipulen papel doblado, luego dibujen barras y solo al final introduzcan la regla de multiplicar numerador y denominador por el mismo número."},
+{id:"p3",t:"Cómo construir oraciones claras y coherentes",s:"Guía lúdica para identificar sujeto y predicado con conectores cotidianos.",a:"Lengua Española",g:"6to Grado",d:"2025-03-08",st:"pub",b:"## Sujeto y predicado\n\nPregunten primero ¿de quién se habla? y después ¿qué se dice de esa persona o cosa? Con esas dos preguntas los estudiantes separan casi cualquier oración simple.\n\n## Conectores\n\nUsen conectores causales (porque), temporales (luego) y adversativos (pero) para unir ideas en un párrafo expositivo."},
+{id:"p4",t:"Explorando la historia dominicana: símbolos y gestas patrias",s:"Un recorrido por el proceso independentista de 1844 para generar pensamiento crítico e identidad ciudadana.",a:"Ciencias Sociales",g:"6to Grado",d:"2025-03-03",st:"pub",b:"## Antes de 1844\n\nLa Trinitaria, fundada por Juan Pablo Duarte en 1838, organizó el ideario separatista. Pidan a los estudiantes construir una línea de tiempo con tres hitos.\n\n## Preguntas generadoras\n\n¿Por qué los símbolos patrios importan hoy? ¿Qué significa ser ciudadano?"},
+{id:"p5",t:"Ecosistemas dominicanos: del manglar al bosque nublado",s:"Exploración de la biodiversidad local con una salida de observación y un cuaderno de campo.",a:"Ciencias Naturales",g:"6to Grado",d:"2025-03-18",st:"pub",b:"## Una isla, muchos mundos\n\nEn pocos kilómetros, República Dominicana pasa de manglares y playas a bosque seco, pinares y bosque nublado en la Cordillera Central.\n\n## Cuaderno de campo\n\nCada estudiante dibuja un organismo, anota dónde vive y qué necesita para sobrevivir. Luego comparan dos ecosistemas en una tabla de semejanzas y diferencias.\n\n> Cuidar un ecosistema empieza por saber nombrarlo."},
+{id:"p6",t:"Comprensión lectora: antes, durante y después de leer",s:"Tres momentos de lectura con preguntas modelo para cualquier texto expositivo.",a:"Lengua Española",g:"5to Grado",d:"2025-03-20",st:"pub",b:"## Antes de leer\n\nObserven el título y las imágenes y pidan una predicción: ¿de qué creen que trata el texto?\n\n## Durante la lectura\n\nSubrayen palabras desconocidas y detengan la lectura cada párrafo para parafrasear con sus propias palabras.\n\n## Después de leer\n\nResuman en tres oraciones y formulen una pregunta que el texto no responde."}],
+res:[
+{id:"r1",t:"Guía y ficha de experimento: el ciclo hidrológico",s:"Terrario condensador con registro de hipótesis y conclusiones guiadas.",a:"Ciencias Naturales",g:"4to y 5to",tipo:"Guía didáctica",u:""},
+{id:"r2",t:"Rúbrica formativa: comprensión de fracciones equivalentes",s:"Matriz de cuatro niveles de dominio alineada al currículo por competencias.",a:"Matemática",g:"4to y 5to",tipo:"Rúbrica",u:""},
+{id:"r3",t:"Ficha de ejercicios: coherencia y conectores",s:"Diseñada en blanco y negro para fotocopiado económico.",a:"Lengua Española",g:"6to",tipo:"Ficha imprimible",u:""},
+{id:"r4",t:"Línea de tiempo ilustrada: efemérides dominicanas",s:"Póster de aula con los hitos de 1844 y el ideario duartiano.",a:"Ciencias Sociales",g:"6to",tipo:"Infografía",u:""},
+{id:"r5",t:"Cuaderno de campo: observando ecosistemas",s:"Plantilla imprimible para registrar organismos, hábitat y dibujo.",a:"Ciencias Naturales",g:"5to y 6to",tipo:"Ficha imprimible",u:""},
+{id:"r6",t:"Guía de preguntas: antes, durante y después de leer",s:"Banco de preguntas para trabajar comprensión con cualquier texto.",a:"Lengua Española",g:"5to y 6to",tipo:"Guía didáctica",u:""}],
+cm:[
+{id:"c1",pid:"p1",n:"Prof. Manuel Grullón",x:"Hicimos hoy el experimento con mis 28 alumnos y la emoción fue fantástica. ¿Cómo adaptarlo con menos sol?",st:"pend"},
+{id:"c2",pid:"p2",n:"Estefanía Peña",x:"Lo leí con mi hijo para su proyecto. Las preguntas finales nos ayudaron a conversar en casa.",st:"pend"},
+{id:"c3",pid:"p2",n:"Visitante982",x:"Ganen puntos sin estudiar en http://descarga-examenes.example",st:"pend"}],bm:[],v:{}});
+let S=(()=>{try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&r.posts)return r}catch(e){}return seed()})();
+let DB=null,ME=false,UID=null,myReads={},rdy=false,pt;
+const fire=p=>{p&&p.catch&&p.catch(()=>toast("No se pudo guardar en el servidor"))};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
+if(DB&&ME){clearTimeout(pt);pt=setTimeout(()=>{fire(DB.doc("blog/content").set({posts:S.posts.filter(x=>x.st==="pub"),res:S.res,p:S.p}));fire(DB.doc("private/drafts").set({posts:S.posts.filter(x=>x.st!=="pub"),lib:S.lib||[]}))},600)}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fd=d=>new Date(d+"T12:00").toLocaleDateString("es-DO",{day:"numeric",month:"long",year:"numeric"});
+const rt=b=>Math.max(1,Math.round(b.split(/\s+/).length/190));
+const hasLink=t=>/https?:|www\.|hxxp/i.test(t);
+const uid=()=>Math.random().toString(36).slice(2,9);
+let Q={q:"",a:"",g:"",bm:false,tipo:""},auth=false,T="Resumen",E=null;
+function toast(m){const t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2200)}
+function theme(){document.documentElement.style.setProperty("--ac",S.p.accent);document.title=S.p.blog;$("#brand").textContent=S.p.blog}
+const pubs=()=>S.posts.filter(x=>x.st==="pub").sort((a,b)=>b.d.localeCompare(a.d));
+const meta=x=>`<span class="row"><span class="tag">${esc(x.a)}</span><small>${esc(x.g)}</small><small>${rt(x.b)} min de lectura</small><small>${fd(x.d)}</small></span>`;
+const card=x=>`<a class="card" href="#post-${x.id}">${meta(x)}<h3>${esc(x.t)}${S.bm.includes(x.id)?" (guardada)":""}</h3><p class="mu">${esc(x.s)}</p></a>`;
+const chips=(arr,cur,k)=>`<div class="row" style="margin:.6rem 0">`+["",...arr].map(v=>`<button class="chip${cur===v?" on":""}" aria-pressed="${cur===v}" data-a="f" data-k="${k}" data-v="${esc(v)}">${v||"Todas"}</button>`).join("")+`</div>`;
+
+function home(){const p=pubs(),f=p[0];return `<section class="hero"><p class="tag" style="color:#9fd4ff">${esc(S.p.lema)}</p><h1>¡Bienvenidos al aula digital!</h1><p>Soy ${esc(S.p.name)}, ${esc(S.p.role.toLowerCase())}. Aquí comparto lecturas y materiales para explorar el saber dominicano y universal con rigor y entusiasmo.</p><a class="btn" href="#publicaciones">Ver publicaciones</a></section>
+${f?`<h2>Lectura de la semana</h2>${card(f)}`:""}<h2>Áreas curriculares</h2><div class="row">${AREAS.map(a=>`<a class="chip" href="#publicaciones" data-a="area" data-v="${a}">${a}</a>`).join("")}</div>
+<h2 style="margin-top:1.4rem">Más reciente</h2>${p.slice(1,4).map(card).join("")}`}
+
+function list(){const q=Q.q.toLowerCase();return pubs().filter(x=>(!Q.a||x.a===Q.a)&&(!Q.g||x.g===Q.g)&&(!Q.bm||S.bm.includes(x.id))&&(!q||(x.t+x.s+x.g+x.a+x.b).toLowerCase().includes(q)))}
+function posts(){return `<h1>Publicaciones</h1><label class="sr" for="q">Buscar</label><input id="q" type="search" placeholder="Buscar por tema, grado o contenido" value="${esc(Q.q)}">${chips(AREAS,Q.a,"a")}${chips([...new Set(pubs().map(x=>x.g))],Q.g,"g")}<button class="chip${Q.bm?" on":""}" data-a="f" data-k="bm">Solo guardadas</button><div id="list" style="margin-top:1rem">${listHtml()}</div>`}
+function listHtml(){const l=list();return l.length?`<p class="mu">${l.length} resultado${l.length>1?"s":""}</p>`+l.map(card).join(""):`<div class="card">No hay publicaciones con esos filtros. Prueba con otra palabra o quita un filtro.</div>`}
+
+function read(id){const x=S.posts.find(p=>p.id===id);if(!x||(x.st!=="pub"&&!auth))return `<div class="card">Esta publicación no existe o aún es un borrador.</div>`;
+const body=x.b.split(/\n\n+/).map(b=>b.startsWith("## ")?`<h2>${esc(b.slice(3))}</h2>`:b.startsWith("> ")?`<blockquote>${esc(b.slice(2))}</blockquote>`:`<p>${esc(b)}</p>`).join("");
+const cs=S.cm.filter(c=>c.pid===id&&c.st==="ok");const sv=S.bm.includes(id);
+return `<a href="#publicaciones">Volver a publicaciones</a><article style="margin-top:.8rem">${meta(x)}<small class="mu" id="vc">${(S.v||{})[id]||0} lecturas</small><h1 style="margin-top:.4rem">${esc(x.t)}</h1><p class="mu">${esc(x.s)}</p>
+<div class="row" style="margin:.8rem 0"><button class="btn s g" data-a="bm" data-id="${id}">${sv?"Quitar de guardadas":"Guardar"}</button><button class="btn s g" data-a="share" data-id="${id}">Compartir</button><a class="btn s g" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(x.t+" "+location.href)}">WhatsApp</a><button class="btn s g" data-a="fs" data-v="-1" aria-label="Reducir letra">A−</button><button class="btn s g" data-a="fs" data-v="1" aria-label="Aumentar letra">A+</button><button class="btn s g" data-a="tts" data-id="${id}">Escuchar</button><button class="btn s g" onclick="print()">Imprimir</button></div>
+<div class="art">${body}</div></article>
+<h2 style="margin-top:2rem">Comentarios (${cs.length})</h2>${cs.map(c=>`<div class="card"><b>${esc(c.n)}</b><p style="margin:.3rem 0 0">${esc(c.x)}</p></div>`).join("")||`<p class="mu">Aún no hay comentarios aprobados.</p>`}
+<form id="fc" data-id="${id}"><label for="cn">Tu nombre</label><input id="cn" name="n" required maxlength="60"><label for="cx">Tu comentario</label><textarea name="x" id="cx" required maxlength="600" style="min-height:90px"></textarea><p class="mu">No compartas datos personales de menores. Los comentarios se publican tras revisión docente.</p><button class="btn">Enviar comentario</button></form>`}
+
+function recs(){const q=Q.q.toLowerCase();const l=S.res.filter(r=>(!Q.tipo||r.tipo===Q.tipo)&&(!Q.a||r.a===Q.a)&&(!q||(r.t+r.s+r.g).toLowerCase().includes(q)));
+return `<h1>Recursos didácticos</h1><label class="sr" for="qr">Buscar recursos</label><input id="qr" type="search" placeholder="Buscar fichas, rúbricas, guías" value="${esc(Q.q)}">${chips(TIPOS,Q.tipo,"tipo")}${chips(AREAS,Q.a,"a")}<p class="mu">${l.length} de ${S.res.length} recursos</p>`+(l.map(r=>`<div class="card"><span class="row"><span class="tag">${esc(r.tipo)}</span><small>${esc(r.a)}</small><small>${esc(r.g)}</small></span><h3>${esc(r.t)}</h3><p class="mu">${esc(r.s)}</p>${r.u?`<a class="btn s" target="_blank" rel="noopener" href="${esc(r.u)}">Abrir recurso</a>`:`<small>Enlace pendiente de publicar</small>`}</div>`).join("")||`<div class="card">Ningún recurso coincide. Quita algún filtro.</div>`)}
+
+function login(){if(DB&&ME){auth=true;return admin()}if(DB)return `<h1>Acceso docente</h1><div class="card">Este panel es solo para quienes pueden editar esta página. Si eres el docente, abre el enlace con tu cuenta de claude.ai.</div>`;return `<h1>Acceso docente</h1><div class="flag">Protección básica en este navegador: evita accesos casuales, pero no reemplaza un servidor. Los datos se guardan solo aquí.</div><form id="fl"><p>${S.pw?"Ingresa tu contraseña.":"Primera vez: crea una contraseña de al menos 8 caracteres."}</p><label for="pw">Contraseña</label><input id="pw" name="pw" type="password" required minlength="${S.pw?1:8}" autocomplete="${S.pw?"current-password":"new-password"}">${S.pw?"":`<label for="pw2">Repite la contraseña</label><input id="pw2" name="pw2" type="password" required autocomplete="new-password">`}<button class="btn">${S.pw?"Entrar al panel":"Crear y entrar"}</button></form>`}
+function admin(){const pend=S.cm.filter(c=>c.st==="pend");
+const tabs=["Resumen","Entradas","Moderación","Recursos","Biblioteca","Perfil","Datos"];
+let h=`<div class="row sp"><h1>Panel docente</h1><button class="btn s g" data-a="out">Salir</button></div><div class="tabs">${tabs.map(t=>`<button class="chip${T===t?" on":""}" data-a="tab" data-v="${t}">${t}${t==="Moderación"&&pend.length?` (${pend.length})`:""}</button>`).join("")}</div>`;
+if(T==="Resumen")h+=`<div class="row"><div class="card stat"><b>${pubs().length}</b>publicadas</div><div class="card stat"><b>${S.posts.length-pubs().length}</b>borradores</div><div class="card stat"><b>${pend.length}</b>por revisar</div><div class="card stat"><b>${S.res.length}</b>recursos</div><div class="card stat"><b>${Object.values(S.v||{}).reduce((a,b)=>a+b,0)}</b>lecturas</div></div><button class="btn" data-a="new">Escribir nueva entrada</button><h2 style="margin-top:1.4rem">Más leídas</h2><p class="mu">Se cuentan las lecturas hechas en este navegador.</p>${pubs().slice().sort((a,b)=>((S.v||{})[b.id]||0)-((S.v||{})[a.id]||0)).map(x=>`<div class="card row sp"><span>${esc(x.t)}</span><b>${(S.v||{})[x.id]||0}</b></div>`).join("")}`;
+if(T==="Entradas")h+=E?editor():`<button class="btn" data-a="new">Nueva entrada</button><div style="margin-top:1rem">`+S.posts.map(x=>`<div class="card"><span class="tag">${x.st==="pub"?"Publicada":"Borrador"}</span> <small>· ${(S.v||{})[x.id]||0} lecturas</small><h3>${esc(x.t)}</h3><div class="row"><button class="btn s g" data-a="edit" data-id="${x.id}">Editar</button><button class="btn s g" data-a="tog" data-id="${x.id}">${x.st==="pub"?"Pasar a borrador":"Publicar"}</button><button class="btn s d" data-a="del" data-id="${x.id}">Eliminar</button></div></div>`).join("")+`</div>`;
+if(T==="Moderación")h+=pend.length?pend.map(c=>{const p=S.posts.find(x=>x.id===c.pid);return `<div class="card">${hasLink(c.x)?`<div class="flag">Contiene un enlace externo. Revísalo antes de aprobar.</div>`:""}<b>${esc(c.n)}</b> <small>en ${esc(p?p.t:"")}</small><p>${esc(c.x)}</p><div class="row"><button class="btn s" data-a="ok" data-id="${c.id}">Aprobar</button>${hasLink(c.x)?`<button class="btn s g" data-a="oknl" data-id="${c.id}">Aprobar sin enlaces</button>`:""}<button class="btn s d" data-a="no" data-id="${c.id}">Eliminar</button></div></div>`}).join("")+(pend.some(c=>!hasLink(c.x))?`<button class="btn g" data-a="okall">Aprobar todos los seguros</button>`:""):`<div class="card">Bandeja al día. No hay comentarios por revisar.</div>`;
+if(T==="Recursos")h+=`<form id="fr"><label>Título</label><input name="t" required><label>Descripción</label><input name="s" required><div class="row"><div style="flex:1"><label>Tipo</label><select name="tipo">${TIPOS.map(a=>`<option>${a}</option>`).join("")}</select></div><div style="flex:1"><label>Área</label><select name="a">${AREAS.map(a=>`<option>${a}</option>`).join("")}</select></div></div><label>Grado</label><input name="g" placeholder="4to y 5to" required><label>Enlace (opcional)</label><input name="u" type="url" placeholder="https://"><button class="btn">Agregar recurso</button></form><div style="margin-top:1rem">`+S.res.map(r=>`<div class="card row sp"><span>${esc(r.t)}</span><button class="btn s d" data-a="delr" data-id="${r.id}">Quitar</button></div>`).join("")+`</div>`;
+if(T==="Biblioteca")h+=`<p class="mu">Organiza los enlaces a tus imágenes, videos y documentos. Usa “Copiar enlace” para pegarlos donde los necesites.</p><form id="fm"><label>Nombre del archivo</label><input name="t" required><div class="row"><div style="flex:1"><label>Tipo</label><select name="k"><option>Imagen</option><option>Video</option><option>Documento</option><option>Audio</option></select></div><div style="flex:2"><label>Enlace</label><input name="u" type="url" required placeholder="https://"></div></div><button class="btn">Agregar a la biblioteca</button></form><div style="margin-top:1rem">`+(S.lib.length?S.lib.map(m=>`<div class="card"><span class="tag">${esc(m.k)}</span><h3>${esc(m.t)}</h3><div class="row"><a class="btn s g" target="_blank" rel="noopener" href="${esc(m.u)}">Abrir</a><button class="btn s g" data-a="cpl" data-id="${m.id}">Copiar enlace</button><button class="btn s d" data-a="delm" data-id="${m.id}">Quitar</button></div></div>`).join(""):`<div class="card">La biblioteca está vacía. Agrega tu primer archivo arriba.</div>`)+`</div>`;
+if(T==="Perfil"){const p=S.p;h+=`<form id="fp"><label>Nombre del blog</label><input name="blog" value="${esc(p.blog)}" required><label>Lema</label><input name="lema" value="${esc(p.lema)}"><label>Nombre y título</label><input name="name" value="${esc(p.name)}" required><label>Rol</label><input name="role" value="${esc(p.role)}"><label>Escuela o distrito</label><input name="school" value="${esc(p.school)}"><label>Color principal</label><input name="accent" type="color" value="${p.accent}"><button class="btn">Guardar perfil</button></form>`}
+if(T==="Datos")h+=`<p>Copia este texto para respaldar tu blog, o pega uno anterior y restaura.</p><textarea id="bk" style="min-height:220px;font-family:monospace;font-size:.8rem">${esc(JSON.stringify(S))}</textarea><div class="row"><button class="btn" data-a="cp">Copiar respaldo</button><button class="btn g" data-a="rs">Restaurar desde el texto</button><button class="btn d" data-a="rst">Restablecer ejemplos</button></div>`;
+return h}
+function editor(){const x=E;return `<form id="fe"><label>Título</label><input name="t" required value="${esc(x.t)}"><label>Resumen</label><input name="s" required value="${esc(x.s)}"><div class="row"><div style="flex:1"><label>Área</label><select name="a">${AREAS.map(a=>`<option${a===x.a?" selected":""}>${a}</option>`).join("")}</select></div><div style="flex:1"><label>Grado</label><input name="g" value="${esc(x.g)}" required></div></div><label>Contenido (usa “## ” para subtítulos y “> ” para citas; separa párrafos con una línea en blanco)</label><textarea name="b" required style="min-height:260px">${esc(x.b)}</textarea><div class="row"><button class="btn" name="st" value="pub">Publicar</button><button class="btn g" name="st" value="draft">Guardar borrador</button><button type="button" class="btn g" data-a="cancel">Cancelar</button></div></form>`}
+
+function refresh(){const a=document.activeElement;if(E||(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)))return;const y=scrollY;route();scrollTo(0,y)}
+function dropCm(c){if(!DB||!ME||!c.u)return;const r=DB.doc("inbox/"+c.u);fire(r.get().then(s=>r.set({items:((s.data()||{}).items||[]).filter(i=>i.id!==c.id)})))}
+function pushCm(c){if(!DB||!ME)return;fire(DB.doc("comments/"+c.id).set({pid:c.pid,n:c.n,x:c.x}));dropCm(c)}
+async function initBackend(){try{if(!window.claude||!claude.use)return;const c=await claude.use("db"),u=await claude.use("user");if(!c)return;DB=c;ME=!!(u&&await u.canEdit());UID=u?await u.id():null;if(ME)auth=true;
+let pubP=null,drP=[],cmA=[],cmP=[];const merge=()=>{if(pubP)S.posts=[...pubP,...drP]};
+const tm=setTimeout(()=>toast("No se pudo conectar con el servidor. Se muestran datos locales."),10000);
+DB.doc("blog/content").onSnapshot(s=>{clearTimeout(tm);if(s.exists){const d=s.data();pubP=d.posts||[];S.res=d.res||S.res;S.p=d.p||S.p;merge();theme();refresh()}else if(ME)save()},()=>{});
+if(ME)DB.doc("private/drafts").onSnapshot(s=>{if(s.exists){const d=s.data();drP=d.posts||[];S.lib=d.lib||[];merge();refresh()}},()=>{});
+DB.collection("comments").onSnapshot(q=>{cmA=q.docs.map(d=>({...d.data(),id:d.id,st:"ok"}));S.cm=[...cmA,...cmP];refresh()},()=>{});
+if(ME)DB.collection("inbox").onSnapshot(q=>{cmP=q.docs.flatMap(d=>((d.data()||{}).items||[]).map(i=>({...i,u:d.id,st:"pend"})));S.cm=[...cmA,...cmP];refresh()},()=>{});
+DB.collection("reads").onSnapshot(q=>{const v={};myReads={};q.docs.forEach(d=>{const x=d.data();for(const k in x)v[k]=(v[k]||0)+1;if(d.id===UID)myReads={...x}});S.v=v;const first=!rdy;rdy=true;const m=location.hash.match(/^#post-(.+)/);if(m&&first)countRead(m[1]);const e=$("#vc");if(e&&m)e.textContent=(v[m[1]]||0)+" lecturas";else refresh()},()=>{})}catch(e){}}
+const seen=new Set();
+function countRead(id){const x=S.posts.find(p=>p.id===id);if(!x||x.st!=="pub"||auth||seen.has(id))return;seen.add(id);if(DB){if(!rdy){seen.delete(id);return}if(UID&&!myReads[id]){myReads[id]=1;DB.doc("reads/"+UID).set(myReads).catch(()=>{})}return}S.v[id]=(S.v[id]||0)+1;save();const e=$("#vc");if(e)e.textContent=S.v[id]+" lecturas"}
+async function sha(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("aula-abierta:"+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+async function doLogin(d){try{const h=await sha(d.pw||"");if(!S.pw){if((d.pw||"").length<8)return toast("Mínimo 8 caracteres");if(d.pw!==d.pw2)return toast("Las contraseñas no coinciden");S.pw=h;save();auth=true;return route()}if(h===S.pw){auth=true;route()}else toast("Contraseña incorrecta")}catch(e){toast("No se pudo verificar la contraseña")}}
+function route(){S.lib=S.lib||[];S.v=S.v||{};window.speechSynthesis&&speechSynthesis.cancel();const h=location.hash.slice(1)||"inicio";let v;
+if(h.startsWith("post-"))v=read(h.slice(5));else if(h==="publicaciones")v=posts();else if(h==="recursos")v=recs();else if(h==="panel")v=auth?admin():login();else v=home();
+$("#app").innerHTML=v;if(h.startsWith("post-"))countRead(h.slice(5));const base=h.startsWith("post-")?"publicaciones":h;
+$("#nav").innerHTML=[["inicio","Inicio"],["publicaciones","Lecturas"],["recursos","Recursos"],["panel","Docente"]].map(([k,n])=>`<a href="#${k}"${k===base||(k==="inicio"&&!["publicaciones","recursos","panel"].includes(base))?' class="on" aria-current="page"':""}>${n}</a>`).join("");
+if(!h.startsWith("post-")){scrollTo(0,0);$("#app").focus({preventScroll:true})}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,id=b.dataset.id,v=b.dataset.v;
+if(a==="area"){Q.a=v;return}
+if(a==="theme"){const r=document.documentElement,d=r.dataset.theme==="dark"||(!r.dataset.theme&&matchMedia("(prefers-color-scheme:dark)").matches);r.dataset.theme=d?"light":"dark";return}
+if(a==="f"){const k=b.dataset.k;Q[k]=k==="bm"?!Q.bm:(Q[k]===v?"":v);return route()}
+if(a==="bm"){S.bm=S.bm.includes(id)?S.bm.filter(x=>x!==id):[...S.bm,id];save();toast("Lista de guardadas actualizada");return route()}
+if(a==="share"){const x=S.posts.find(p=>p.id===id);if(navigator.share)navigator.share({title:x.t,url:location.href}).catch(()=>{});else navigator.clipboard?.writeText(location.href).then(()=>toast("Enlace copiado"),()=>toast("No se pudo copiar"));return}
+if(a==="fs"){const r=document.documentElement,c=parseInt(getComputedStyle($(".art")).fontSize);r.style.setProperty("--fs",Math.min(26,Math.max(15,c+2*v))+"px");return}
+if(a==="out"){auth=false;if(DB&&ME){location.hash="inicio";return}return route()}
+if(a==="tab"){T=v;E=null;return route()}
+if(a==="new"){T="Entradas";E={id:uid(),t:"",s:"",a:AREAS[0],g:"",b:"",d:new Date().toISOString().slice(0,10),st:"draft",isNew:true};return route()}
+if(a==="edit"){E={...S.posts.find(x=>x.id===id)};return route()}
+if(a==="cancel"){E=null;return route()}
+if(a==="tog"){const x=S.posts.find(p=>p.id===id);x.st=x.st==="pub"?"draft":"pub";save();return route()}
+if(a==="del"){if(confirm("¿Eliminar esta entrada y sus comentarios?")){S.posts=S.posts.filter(p=>p.id!==id);S.cm=S.cm.filter(c=>c.pid!==id);save();route()}return}
+if(a==="ok"||a==="oknl"){const c=S.cm.find(x=>x.id===id);if(a==="oknl")c.x=c.x.replace(/(https?:\/\/|www\.|hxxp:\/\/)\S+/gi,"[enlace eliminado]");c.st="ok";save();pushCm(c);toast("Comentario aprobado");return route()}
+if(a==="no"){const cc=S.cm.find(x=>x.id===id);S.cm=S.cm.filter(c=>c.id!==id);save();if(cc)dropCm(cc);return route()}
+if(a==="okall"){S.cm.forEach(c=>{if(c.st==="pend"&&!hasLink(c.x)){c.st="ok";pushCm(c)}});save();toast("Comentarios seguros aprobados");return route()}
+if(a==="delm"){S.lib=S.lib.filter(m=>m.id!==id);save();return route()}
+if(a==="cpl"){const m=S.lib.find(x=>x.id===id);navigator.clipboard?.writeText(m.u).then(()=>toast("Enlace copiado"),()=>toast("No se pudo copiar"));return}
+if(a==="tts"){if(!window.speechSynthesis)return toast("Tu navegador no admite lectura en voz alta");if(speechSynthesis.speaking){speechSynthesis.cancel();b.textContent="Escuchar";return}const x=S.posts.find(p=>p.id===id),u=new SpeechSynthesisUtterance(x.t+". "+x.b.replace(/^(## |> )/gm,""));u.lang="es-DO";u.onend=()=>b.textContent="Escuchar";speechSynthesis.speak(u);b.textContent="Detener audio";return}
+if(a==="delr"){S.res=S.res.filter(r=>r.id!==id);save();return route()}
+if(a==="cp"){const t=$("#bk");t.select();navigator.clipboard?.writeText(t.value).then(()=>toast("Respaldo copiado"),()=>toast("Copia el texto seleccionado"));return}
+if(a==="rs"){try{const r=JSON.parse($("#bk").value);if(!r.posts||!r.p)throw 0;S=r;save();theme();toast("Datos restaurados");route()}catch(e){toast("El texto no es un respaldo válido")}return}
+if(a==="rst"){if(confirm("Se perderán tus cambios. ¿Continuar?")){S=seed();save();theme();route()}}});
+document.addEventListener("input",e=>{if(e.target.id==="q"){Q.q=e.target.value;$("#list").innerHTML=listHtml()}if(e.target.id==="qr"){Q.q=e.target.value;const p=e.target.selectionStart;route();const i=$("#qr");i.focus();i.setSelectionRange(p,p)}});
+document.addEventListener("submit",e=>{e.preventDefault();const f=e.target,d=Object.fromEntries(new FormData(f));
+if(f.id==="fl")return doLogin(d);
+if(f.id==="fc"){const o={id:uid(),pid:f.dataset.id,n:d.n.trim(),x:d.x.trim()};if(DB&&UID){const r=DB.doc("inbox/"+UID);r.get().then(s=>r.set({items:[...((s.data()||{}).items||[]),o]})).then(()=>{f.reset();toast("Enviado. Se publicará tras la revisión")}).catch(()=>toast("No se pudo enviar. Necesitas acceso de colaborador"))}else{S.cm.push({...o,st:"pend"});save();f.reset();toast("Enviado. Se publicará tras la revisión")}}
+if(f.id==="fm"){S.lib.unshift({id:uid(),...d});save();toast("Archivo agregado");route()}
+if(f.id==="fr"){S.res.push({id:uid(),...d});save();toast("Recurso agregado");route()}
+if(f.id==="fp"){Object.assign(S.p,d);save();theme();toast("Perfil guardado")}
+if(f.id==="fe"){const st=e.submitter?.value||"draft",{isNew,...x}=E;Object.assign(x,{t:d.t,s:d.s,a:d.a,g:d.g,b:d.b,st});const i=S.posts.findIndex(p=>p.id===x.id);i<0?S.posts.unshift(x):S.posts[i]=x;save();E=null;toast(st==="pub"?"Entrada publicada":"Borrador guardado");route()}});
+addEventListener("scroll",()=>{const h=document.documentElement,p=$("#prog");p.style.width=location.hash.startsWith("#post-")?(scrollY/Math.max(1,h.scrollHeight-innerHeight)*100)+"%":"0"},{passive:true});
+addEventListener("hashchange",()=>{Q.q="";route()});theme();route();initBackend();
+</script></body></html>

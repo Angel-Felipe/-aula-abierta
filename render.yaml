@@ -1,0 +1,6 @@
+services:
+  - type: web
+    runtime: static
+    name: aula-abierta
+    buildCommand: echo "sitio estático"
+    staticPublishPath: .
